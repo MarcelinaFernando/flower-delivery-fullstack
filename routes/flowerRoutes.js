@@ -3,13 +3,14 @@ import { createFlower, getFlowers, deleteFlower, upload } from "../controllers/f
 
 const router = express.Router();
 
-// GET all flowers
+// GET to show all flowers
 router.get("/", getFlowers);
 
-// POST new flower (with image upload)
+// POST to add new flower (with image upload)
 router.post("/", upload.single("image"), createFlower);
 
-// DELETE flower by ID
+// DELETE, to delete flower by ID
+
 router.delete("/:id", deleteFlower);
 
 export default router;

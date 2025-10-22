@@ -18,7 +18,7 @@ app.use("/uploads", express.static("uploads"));
 // Routes
 app.use("/api/flowers", flowerRoutes); 
 
-// Connect to MongoDB
+// Connect to MongoDB Atlas
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected successfully"))

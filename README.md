@@ -19,7 +19,7 @@ The project follows **professional development practices**, including:
 ---
 
 ## 🔗 Live Preview
-[👉 Click here to view the website](https://link-do-render.com)
+[👉 Click here to view the website](https://flower-delivery-api.onrender.com)
 
 ## 🎥 Walkthrough Video
 [🎬 Watch the video on Loom](https://link-do-loom.com)
