@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import flowerRoutes from "./routes/flowerRoutes.js";
+import fs from "fs";
+
 
 dotenv.config();
 
@@ -11,6 +13,11 @@ const app = express();
 // Middlewares
 app.use(cors());
 app.use(express.json());
+
+//Create the 'uploads' folder if it does not exist.
+if (!fs.existsSync("uploads")) {
+  fs.mkdirSync("uploads");
+}
 
 // Serve static files (to access images)
 app.use("/uploads", express.static("uploads"));
