@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import flowerRoutes from "./routes/flowerRoutes.js";
+import multer from "multer";
 import fs from "fs";
-
 
 dotenv.config();
 
@@ -14,22 +14,32 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//Create the 'uploads' folder if it does not exist.
-if (!fs.existsSync("uploads")) {
-  fs.mkdirSync("uploads");
+// Create 'uploads' folder if it doesn't exist
+const uploadFolder = "uploads";
+if (!fs.existsSync(uploadFolder)) {
+  fs.mkdirSync(uploadFolder);
 }
 
-// Serve static files (to access images)
-app.use("/uploads", express.static("uploads"));
+// Configure Multer to save files in 'uploads'
+export const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadFolder);
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+
+export const upload = multer({ storage });
 
 // Routes
-app.use("/api/flowers", flowerRoutes); 
+app.use("/api/flowers", flowerRoutes);
 
 // Connect to MongoDB Atlas
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected successfully"))
-  .catch((err) => console.error(" MongoDB connection error:", err));
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 // Start the server
 const PORT = process.env.PORT || 5000;
