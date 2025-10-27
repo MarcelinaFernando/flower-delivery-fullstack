@@ -32,11 +32,17 @@ export const createFlower = async (req, res) => {
 export const getFlowers = async (req, res) => {
   try {
     const flowers = await Flower.find();
-    res.status(200).json(flowers);
+    const flowersWithLinks = flowers.map(flower => ({
+      ...flower._doc,
+      imageUrl: `https://flower-delivery-api.onrender.com/${flower.image}` 
+    }));
+
+    res.status(200).json(flowersWithLinks);
   } catch (error) {
     res.status(500).json({ message: "Error fetching flowers", error });
   }
 };
+
 
 // Function to delete a flower
 export const deleteFlower = async (req, res) => {
