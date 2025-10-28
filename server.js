@@ -21,7 +21,7 @@ if (!fs.existsSync(uploadFolder)) {
 }
 
 // Configure Multer to save files in 'uploads'
-export const storage = multer.diskStorage({
+const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, uploadFolder);
   },
@@ -31,6 +31,9 @@ export const storage = multer.diskStorage({
 });
 
 export const upload = multer({ storage });
+
+// Serve static files from 'uploads' folder
+app.use("/uploads", express.static("uploads"));
 
 // Routes
 app.use("/api/flowers", flowerRoutes);

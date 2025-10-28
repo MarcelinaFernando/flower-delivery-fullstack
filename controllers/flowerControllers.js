@@ -1,29 +1,16 @@
 import Flower from "../models/flowerModel.js";
-import multer from "multer";
-import path from "path";
-
-// Multer configuration
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/"); // Folder where the images will be saved
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname)); // Unique name for each image
-  },
-});
-
-export const upload = multer({ storage });
 
 // Function to create a new flower
 export const createFlower = async (req, res) => {
   try {
     const { name, description, price, category } = req.body;
-    const image = req.file.path; // Path of the image saved by Multer
+    const image = req.file ? req.file.path : null; // Path of the image saved by Multer
 
     const newFlower = new Flower({ name, description, price, category, image });
     await newFlower.save();
     res.status(201).json(newFlower);
   } catch (error) {
+    console.error("Error creating flower:", error);
     res.status(500).json({ message: "Error creating flower", error });
   }
 };
@@ -37,7 +24,6 @@ export const getFlowers = async (req, res) => {
     res.status(500).json({ message: "Error fetching flowers", error });
   }
 };
-
 
 // Function to delete a flower
 export const deleteFlower = async (req, res) => {
