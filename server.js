@@ -36,7 +36,7 @@ export const upload = multer({ storage });
 app.use("/uploads", express.static("uploads"));
 
 // Routes
-app.use("/api/flowers", flowerRoutes);
+app.use("/api/flowers", flowerRoutes(upload));
 
 // Connect to MongoDB Atlas
 mongoose
