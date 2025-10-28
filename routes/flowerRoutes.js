@@ -1,5 +1,5 @@
 import express from "express";
-import { createFlower, getFlowers, deleteFlower } from "../controllers/flowerController.js";
+import { createFlower, getFlowers, deleteFlower } from "../controllers/flowerControllers.js";
 
 const router = express.Router();
 
