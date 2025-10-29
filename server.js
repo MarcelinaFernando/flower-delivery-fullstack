@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import flowerRoutes from "./routes/flowerRoutes.js";
+import userRoutes from "./routes/userRoutes.js"; // Import user routes
 import multer from "multer";
 import fs from "fs";
 
@@ -36,7 +37,9 @@ export const upload = multer({ storage });
 app.use("/uploads", express.static("uploads"));
 
 // Routes
-app.use("/api/flowers", flowerRoutes(upload));
+app.use("/api/flowers", flowerRoutes(upload)); // Flowers routes
+app.use("/api/users", userRoutes); // User routes
+
 
 // Connect to MongoDB Atlas
 mongoose
