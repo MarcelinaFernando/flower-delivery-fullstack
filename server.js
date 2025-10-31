@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import flowerRoutes from "./routes/flowerRoutes.js";
+import userRoutes from "./routes/userRoutes.js"; // Import user routes
 import multer from "multer";
 import fs from "fs";
 
@@ -36,14 +37,24 @@ export const upload = multer({ storage });
 app.use("/uploads", express.static("uploads"));
 
 // Routes
-app.use("/api/flowers", flowerRoutes(upload));
+app.use("/api/flowers", flowerRoutes(upload)); // Flowers routes
+app.use("/api/users", userRoutes); // User routes
 
-// Connect to MongoDB Atlas
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB connected successfully"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+// Function to connect to MongoDB and start server
+const startServer = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 10000, // Espera até 10s para conectar
+    });
+    console.log("✅ MongoDB connected successfully");
 
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
+    process.exit(1); // Encerra o processo se a conexão falhar
+  }
+};
+
+startServer();
+
