@@ -1,52 +1,89 @@
-# Flower Delivery Website – Backend API (Milestone 1)
+# Flower Delivery Website – Backend API
 
 ## Description
-This project consists of the development of the **backend for a flower delivery website**, focusing on secure and scalable APIs.  
-This project is part of **Module 4** of the ElevateHer program.
 
-The goal was to build the backend of the site, allowing:  
-- creation,  
-- listing,  
-- deletion of flowers,  
-- image upload with Multer,  
-- integration with MongoDB Atlas.
+This project is part of **Module 4** of the **ElevateHer Program**.  
+It consists of building the backend of a flower delivery website, focusing on a **secure, scalable backend API**.
 
-The project follows **professional development practices**, including:  
-- use of environment variables with `dotenv`  
-- code versioning with Git/GitHub  
-- implementation of essential middlewares (`CORS`, `express.json`)
+The project was developed in two main milestones:
 
 ---
 
-## 🔗 Live Preview
-[👉 Click here to view the website](https://flower-delivery-api.onrender.com)
+## Milestone 1 – Basic Flower Management
 
-## 🎥 Walkthrough Video
-[🎬 Watch the video on Loom](https://www.loom.com/share/1672d4b27c574e089a9ff26086d0e82d?sid=156060f5-c311-42ba-9cdf-9cdbbbb6b980)
+###  Overview
+The first version focused on the core backend structure for managing flowers and uploading images.
 
----
+###  Features Implemented
+- Create, list, and delete flowers  
+- **GET /api/flowers** → list all flowers  
+- **POST /api/flowers** → add a new flower (with image upload)  
+- **DELETE /api/flowers/:id** → delete a flower by ID  
+- Image upload with **Multer**, stored in the `/uploads` folder  
+- **MongoDB Atlas** integration using environment variables  
+- Express middlewares: `CORS`, `express.json`, and `dotenv`  
+- Code versioning with **Git & GitHub**  
+- Deployment on **Render.com**
 
-## Implemented Features (Milestone 1)
-- List all flowers (`GET /api/flowers`)  
-- Add a new flower with image (`POST /api/flowers`)  
-- Delete a flower by ID (`DELETE /api/flowers/:id`)  
-- Image upload with Multer and public access via middleware (`/uploads`)  
-- MongoDB Atlas connection using environment variables  
-
----
-
-## Technologies Used
+### Technologies Used
 - **Node.js** – JavaScript runtime environment  
-- **Express** – API framework  
-- **MongoDB Atlas** – NoSQL database  
-- **Multer** – file upload and storage  
+- **Express.js** – API framework  
+- **MongoDB Atlas** – cloud NoSQL database  
+- **Multer** – for handling image uploads  
 - **dotenv** – environment variable management  
-- **CORS** – external request control  
-- **Git & GitHub** – code versioning  
-- **Render.com** – deployment
+- **CORS** – control of external requests  
+- **Render.com** – hosting platform  
+
+### 🔗 Links
+- **Live API:** [Click here to view the API online](https://flower-delivery-api.onrender.com)  
+- **Walkthrough Video (Loom):** 🎥 [Click here to watch on Loom](https://www.loom.com/share/1672d4b27c574e089a9ff26086d0e82d?sid=156060f5-c311-42ba-9cdf-9cdbbbb6b980)
 
 ---
 
-## Author
+## Milestone 2 – User Authentication & Authorization
+
+###  Overview
+In this second version, the backend was expanded and improved with user management and JWT authentication, ensuring secure access to protected routes.
+
+###  New Features Added
+- User **registration and login** using **JWT** and **bcrypt**  
+- Added new files: `userModel.js`, `userRoutes.js`, and `userController.js`  
+- Validation for user data (name, email, password)  
+- Password encryption using **bcrypt**  
+- JWT token generation for secure authentication  
+- Support for user cart data (`cartData` field in schema)  
+- Database integration verified and tested via **MongoDB Atlas**  
+- API tested via **POSTMAN** for signup and login endpoints  
+- Code organized into modular structure (**Models**, **Routes**, **Controllers**)  
+- Prepared for **Google OAuth integration** (optional future feature)
+
+### Technologies Added in Version 2
+- **bcryptjs** – password encryption  
+- **jsonwebtoken (JWT)** – authentication and token generation  
+- **validator** – input validation  
+
+### Folder Structure (Updated)
+flower-delivery-website/
+├── controllers/
+│ ├── flowerController.js
+│ └── userController.js
+├── models/
+│ ├── flowerModel.js
+│ └── userModel.js
+├── routes/
+│ ├── flowerRoutes.js
+│ └── userRoutes.js
+├── server.js
+├── .env
+├── package.json
+└── uploads/
+
+### 🔗 Links
+- **Live API (Render):** [Click here to view the API online](https://flower-delivery-api-v2.onrender.com)  
+- **Walkthrough Video (Milestone 2):** 🎥 [Click here to watch on Loom](https://www.loom.com/share/your-link-here)
+
+---
+
+## 👩🏽‍💻 Author
 - **Name:** Marcelina Fernando  
 - **Email:** marcelinafernanda235@gmail.com
