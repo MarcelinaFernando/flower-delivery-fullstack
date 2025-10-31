@@ -61,22 +61,6 @@ In this second version, the backend was expanded and improved with user manageme
 - **jsonwebtoken (JWT)** – authentication and token generation  
 - **validator** – input validation  
 
-### Folder Structure (Updated)
-flower-delivery-website/
-├── controllers/
-│ ├── flowerController.js
-│ └── userController.js
-├── models/
-│ ├── flowerModel.js
-│ └── userModel.js
-├── routes/
-│ ├── flowerRoutes.js
-│ └── userRoutes.js
-├── server.js
-├── .env
-├── package.json
-└── uploads/
-
 ### 🔗 Links
 - **Live API (Render):** [Click here to view the API online](https://flower-delivery-api-v2.onrender.com)  
 - **Walkthrough Video (Milestone 2):** 🎥 [Click here to watch on Loom](https://www.loom.com/share/your-link-here)
