@@ -63,7 +63,7 @@ In this second version, the backend was expanded and improved with user manageme
 
 ### 🔗 Links
 - **Live API (Render):** [Click here to view the API online](https://flower-delivery-api-v2.onrender.com)  
-- **Walkthrough Video (Milestone 2):** 🎥 [Click here to watch on Loom](https://www.loom.com/share/your-link-here)
+- **Walkthrough Video (Milestone 2):** 🎥 [Click here to watch on Loom](https://www.loom.com/share/e9287d0d92ff420cb6fe6a4477e96449)
 
 ---
 
