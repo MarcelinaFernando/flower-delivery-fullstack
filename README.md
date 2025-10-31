@@ -54,8 +54,7 @@ In this second version, the backend was expanded and improved with user manageme
 - Support for user cart data (`cartData` field in schema)  
 - Database integration verified and tested via **MongoDB Atlas**  
 - API tested via **POSTMAN** for signup and login endpoints  
-- Code organized into modular structure (**Models**, **Routes**, **Controllers**)  
-- Prepared for **Google OAuth integration** (optional future feature)
+- Code organized into modular structure (**Models**, **Routes**, **Controllers**)
 
 ### Technologies Added in Version 2
 - **bcryptjs** – password encryption  
